@@ -1,33 +1,62 @@
 import Block from "../block/block.class";
 import CryptoHash from "../crypto-hash/crypto-hash.class";
 
+/**
+ * Blockchain class
+ */
 export default class Blockchain {
-  chain: Block[];
+  chain: Block[]; // stores the actual chain
+
+  /**
+   * initialize the first block of the chain as genesis block
+   */
   constructor() {
     this.chain = [Block.genesis()];
   }
 
+  /**
+   * Adding Data to the block
+   * and pushing the block into the chain
+   * @param data the data to be added to the block
+   */
   addBlock(data: any) {
     const newBlock = Block.mineBlock(this.chain[this.chain.length - 1], data);
     this.chain.push(newBlock);
   }
 
+  /**
+   * Validate the entire chain by checking the following
+   * 1. check if the first block is the genesis block.
+   * 2. check if the lastHash property of the current block is equal to the hash of the previous block.
+   * 3. check if the hash of the current block is correctly generated using the CryptoHash class.
+   * @param blocks passing the entire chain for validation
+   * @returns boolean value for each condition.
+   */
   static isValidChain(blocks: Block[]): boolean {
+    // we cannot directly compare objects so we need to compare the properties of those objects.
     if (JSON.stringify(blocks[0]) !== JSON.stringify(Block.genesis())) {
       return false;
     }
-    
-    for(let i:number=1; i<blocks.length; i++) {
-        let currentBlock: Block = blocks[i];
-        let previousBlock: Block = blocks[i-1];
 
-        if(currentBlock.lastHash !== previousBlock.hash) {
-            return false;
-        }
+    // Looping through the entire chain and checking individual blocks
+    for (let i: number = 1; i < blocks.length; i++) {
+      let currentBlock: Block = blocks[i];
+      let previousBlock: Block = blocks[i - 1];
 
-        if(currentBlock.hash !== CryptoHash.genHash([currentBlock.timestamp, currentBlock.lastHash, currentBlock.data])) {
-            return false;
-        }
+      if (currentBlock.lastHash !== previousBlock.hash) {
+        return false;
+      }
+
+      if (
+        currentBlock.hash !==
+        CryptoHash.genHash([
+          currentBlock.timestamp,
+          currentBlock.lastHash,
+          currentBlock.data,
+        ])
+      ) {
+        return false;
+      }
     }
     return true;
   }
