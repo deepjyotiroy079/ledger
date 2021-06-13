@@ -1,4 +1,4 @@
-import CryptoHash from "../crypto-hash/crypto-hash.class";
+import CryptoHash from "../utils/crypto-hash.class";
 import { GENESIS_DATA } from "./../config/genesis.config";
 
 /**

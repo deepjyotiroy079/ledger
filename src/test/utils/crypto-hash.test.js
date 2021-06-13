@@ -1,4 +1,4 @@
-import CryptoHash from "../../main/crypto-hash/crypto-hash.class";
+import CryptoHash from '../../main/utils/crypto-hash.class';
 
 describe("cryptoHash function", () => {
   //   fe14010b4fe83303852f0467c919ef9a7ca089b91e96e3aad7d426dd87079297;

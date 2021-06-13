@@ -1,6 +1,6 @@
 import { GENESIS_DATA } from './../../main/config/genesis.config';
 import Block from '../../main/block/block.class';
-import CryptoHash from '../../main/crypto-hash/crypto-hash.class';
+import CryptoHash from '../../main/utils/crypto-hash.class';
 
 describe('Block', () => {
     const timestamp = "10/10/2021";

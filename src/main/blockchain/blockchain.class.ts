@@ -1,5 +1,5 @@
 import Block from "../block/block.class";
-import CryptoHash from "../crypto-hash/crypto-hash.class";
+import CryptoHash from "../utils/crypto-hash.class";
 
 /**
  * Blockchain class
