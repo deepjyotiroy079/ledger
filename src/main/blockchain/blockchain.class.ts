@@ -60,4 +60,30 @@ export default class Blockchain {
     }
     return true;
   }
+
+  /**
+   * Replace chain function to replace the current chain with the current longest chain
+   * Conditions given
+   * 1. The incoming chain must be longer than the current chain
+   * 2. The incoming chain must be valid.
+   * @param chain incoming chain.
+   * Replaces the current chain with the incoming chain
+   */
+  replaceChain(chain: Block[]) {
+    // checking if the length of the incoming chain is less than the existing chain
+    if(chain.length < this.chain.length) {
+      console.error(`Incoming chain must be longer`);
+      
+      return;
+    }
+    // checking if the incoming chain is not valid
+    if(!Blockchain.isValidChain(chain)) {
+      console.error(`Incoming chain must be valid`);
+      return;
+    }
+
+    console.log(`Replacing chain with incoming chain: ${JSON.stringify(chain)}`);
+    
+    this.chain = chain;
+  }
 }
