@@ -1,5 +1,4 @@
 import Block from "../block/block.class";
-import CryptoHash from "../utils/crypto-hash.class";
 
 /**
  * Blockchain class
@@ -49,11 +48,13 @@ export default class Blockchain {
 
       if (
         currentBlock.hash !==
-        CryptoHash.genHash([
+        Block.generateHash(
           currentBlock.timestamp,
           currentBlock.lastHash,
           currentBlock.data,
-        ])
+          currentBlock.nonce,
+          currentBlock.difficulty
+        )
       ) {
         return false;
       }

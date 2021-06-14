@@ -36,10 +36,12 @@ describe("Blockchain", () => {
     describe("when chain doesnot start with genesis block", () => {
       it("returns false", () => {
         blockchain.chain[0] = new Block(
-          "01/02/2021",
+          1623639180,
           "last-hash",
           "hash",
-          "fake-genesis"
+          "fake-genesis",
+          1,
+          5
         );
         expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
       });

@@ -1,6 +1,11 @@
+const INITIAL_DIFFICULTY = 3;
+
 export const GENESIS_DATA = {
-    timestamp: "01/01/2021",
+    
+    timestamp: 1623639180,
     lastHash: '--------',
     hash: 'hash-one',
-    data: []
+    data: [],
+    difficulty: INITIAL_DIFFICULTY,
+    nonce: 0,
 };
