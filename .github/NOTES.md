@@ -85,4 +85,8 @@ The blockchain must add a block to its chain at a given rate. For example in cas
     The Adding of blocks to the chain is know as Mining
 ```
 
-To maintain an average mining rate we must adjust the difficulty for every block so as to add blocks at a reasonable rate.
+To maintain an average mining rate we must adjust the difficulty for every block so as to add blocks at a reasonable rate. In this blockchain we are comparing the timestamp of the current block and the previous block. 
+
+* If the difference in timestamp is `less than` the `mining rate`, it means blocks are taking less time to be mined and added to the chain. Therefore, `we must increase the difficulty for the next block`.
+
+* Similarly if the difference in timestamp is `more than` the `mining rate`, it means blocks are taking longer to be mined and added to the chain. Therefore, `we must decrease the difficulty for the next block`.
