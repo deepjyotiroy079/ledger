@@ -76,3 +76,13 @@ The nonce value is iterated by one on every hash generation attempt. If the hash
 There are different proof-of-work systems, but this blockchain uses a similar proof-of-work system that Bitcoin uses, ```Hashcash```. 
 
 The goal is to generate a hash with a certain number of leading zeros, which is the difficulty level.
+
+## Mining Rate and Dynamic Difficulty
+
+The blockchain must add a block to its chain at a given rate. For example in case of Bitcoin it's 10 mins. If blocks are added to the chain too frequently that means that difficulty is low and similarly if the blocks are added to chain too slowly that means the difficulty is high.
+
+```
+    The Adding of blocks to the chain is know as Mining
+```
+
+To maintain an average mining rate we must adjust the difficulty for every block so as to add blocks at a reasonable rate.
